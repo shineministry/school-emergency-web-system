@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red_bright"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/alarmHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="serif"
+        android:text="Emergency alert"
+        android:textColor="@color/dark_text"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/alarmType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="serif"
+        android:text="🔥 SCHOOL FIRE ALERT"
+        android:textColor="@color/dark_text"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/alarmScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/alarmBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text=""
+            android:textColor="@color/dark_text"
+            android:textSize="18sp" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/alarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"
+        android:text=""
+        android:textColor="@color/dark_text"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btnSafe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFFFFFFF"
+        android:text="OK – I AM SAFE"
+        android:textColor="@color/red"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSoundOff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="#33000000"
+        android:text="STOP SOUND"
+        android:textColor="@color/dark_text"
+        android:textSize="15sp" />
+</LinearLayout>

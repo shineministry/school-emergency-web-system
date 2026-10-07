@@ -1,0 +1,96 @@
+:root {
+  --bg: #0b0f14;
+  --panel: #141b24;
+  --line: #243040;
+  --red: #c8102e;
+  --text: #e8eef5;
+  --muted: #93a4b8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #101720, #0b0f14);
+  border-bottom: 3px solid var(--red);
+}
+
+.logo { width: 56px; height: 56px; border-radius: 12px; }
+.topbar h1 { margin: 0; font-size: 22px; letter-spacing: 0.5px; }
+.topbar p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 28px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.card:hover { transform: translateY(-4px); }
+.card.staff { border-top: 4px solid var(--red); }
+.card.staff:hover { border-color: var(--red); }
+.card.student { border-top: 4px solid #2f80ed; }
+.card.student:hover { border-color: #2f80ed; }
+
+.card-emoji { font-size: 40px; }
+.card h2 { margin: 12px 0 8px; font-size: 20px; }
+.card p { color: var(--muted); font-size: 15px; line-height: 1.5; }
+.cta { display: inline-block; margin-top: 14px; font-weight: 700; color: #fff; }
+
+.info { max-width: 1000px; margin: 0 auto; padding: 0 24px 48px; }
+.info h3 { border-left: 4px solid var(--red); padding-left: 10px; }
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.step {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  min-width: 150px;
+}
+
+.step strong { color: var(--text); }
+.arrow { font-size: 22px; color: var(--red); font-weight: 700; }
+
+.disclaimer {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--panel);
+  border-left: 4px solid #f2a900;
+  padding: 12px 16px;
+  border-radius: 8px;
+}

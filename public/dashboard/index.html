@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>School Emergency – Staff Dashboard</title>
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="icon" href="/assets/icon-192.png" />
+  <link rel="stylesheet" href="/dashboard/dashboard.css" />
+</head>
+<body>
+
+  <!-- AUTH -->
+  <section id="auth-view" class="view auth-view">
+    <div class="auth-box">
+      <img src="/assets/icon-192.png" alt="" class="auth-logo" />
+      <h1>Staff Access</h1>
+      <p class="subtitle">Authorized school staff only</p>
+      <form id="login-form" class="form">
+        <label>Email<input type="email" id="login-email" required placeholder="schmid@bg7.at" /></label>
+        <label>Password<input type="password" id="login-password" required placeholder="Staff123!" /></label>
+        <button type="submit" class="btn primary">Sign in</button>
+      </form>
+      <p id="auth-error" class="error" hidden></p>
+      <p class="hint">Demo: schmid@bg7.at / Staff123! &nbsp;|&nbsp; admin@bg7.at / Admin123!</p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dash-view" class="view" hidden>
+    <header class="topbar">
+      <div class="brand">
+        <img src="/assets/icon-192.png" alt="" />
+        <div>
+          <strong>🚨 Emergency Command</strong>
+          <span id="school-name"></span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="enable-push" class="btn ghost small" hidden>🔔 Enable alerts on this device</button>
+        <span id="user-name" class="chip"></span>
+        <button id="logout-btn" class="btn ghost small">Log out</button>
+      </div>
+    </header>
+
+    <main class="dash">
+      <!-- ACTIVE ALERT -->
+      <section id="active-panel" class="panel active-panel" hidden>
+        <div class="panel-head">
+          <h2><span id="active-icon">🔥</span> <span id="active-title">ACTIVE ALERT</span></h2>
+          <button id="close-alert" class="btn danger small">🌤️ SEND ALL CLEAR & CLOSE</button>
+        </div>
+
+        <div class="counters">
+          <div class="counter safe"><span id="c-safe">0</span><label>✅ Safe</label></div>
+          <div class="counter notified"><span id="c-notified">0</span><label>🟡 Alerted</label></div>
+          <div class="counter pending"><span id="c-pending">0</span><label>❓ No response</label></div>
+          <div class="counter total"><span id="c-total">0</span><label>Total</label></div>
+        </div>
+
+        <div class="progress"><div id="progress-bar"></div></div>
+
+        <div class="people">
+          <div class="people-col">
+            <h3>✅ Confirmed safe</h3>
+            <ul id="list-safe"></ul>
+          </div>
+          <div class="people-col">
+            <h3>🟡 Alert received / not confirmed</h3>
+            <ul id="list-notified"></ul>
+          </div>
+          <div class="people-col">
+            <h3>❓ No response</h3>
+            <ul id="list-pending"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRIGGER -->
+      <section class="panel trigger-panel" id="trigger-panel">
+        <h2>Trigger emergency alert</h2>
+        <p class="panel-sub">Sends a full-screen high-priority alert to every targeted device instantly.</p>
+
+        <div class="type-grid" id="type-grid">
+          <button class="type-btn active" data-type="fire"><span>🔥</span>Fire</button>
+          <button class="type-btn" data-type="evacuation"><span>🏃</span>Evacuate</button>
+          <button class="type-btn" data-type="lockdown"><span>🔒</span>Lockdown</button>
+          <button class="type-btn" data-type="medical"><span>🚑</span>Medical</button>
+          <button class="type-btn" data-type="danger"><span>⚠️</span>Danger</button>
+        </div>
+
+        <div class="form-row">
+          <label>Target group
+            <input id="target-input" list="group-list" value="all" />
+            <datalist id="group-list">
+              <option value="all">Everyone</option>
+              <option value="students">Students</option>
+              <option value="teachers">Teachers</option>
+            </datalist>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="drill-toggle" />
+            📋 This is a DRILL (marked clearly, not a real emergency)
+          </label>
+        </div>
+
+        <label class="msg-label">Message shown to recipients
+          <textarea id="message-input" rows="3"></textarea>
+        </label>
+
+        <button id="send-btn" class="btn send">🚨 SEND EMERGENCY ALERT</button>
+        <p id="send-status" class="send-status" hidden></p>
+      </section>
+
+      <!-- HISTORY -->
+      <section class="panel">
+        <h2>Alert history</h2>
+        <table class="history">
+          <thead>
+            <tr><th>#</th><th>When</th><th>Type</th><th>Target</th><th>Safe</th><th>Alerted</th><th>No response</th><th>Status</th></tr>
+          </thead>
+          <tbody id="history-body">
+            <tr><td colspan="8" class="empty">No alerts yet</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </section>
+
+  <script src="/dashboard/dashboard.js"></script>
+</body>
+</html>
+

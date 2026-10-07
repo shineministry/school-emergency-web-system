@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">School Emergency</string>
+    <string name="server_hint">Server URL, e.g. http://10.0.25.99:5000</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login">SIGN IN</string>
+</resources>

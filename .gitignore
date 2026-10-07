@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Runtime data (regenerated on start; contains DB + VAPID private keys)
+data/
+
+# Android build outputs & local config
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+*.apk
+*.aab
+
+# Signing material
+*.jks
+*.keystore
+
+# Logs & OS noise
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>School Emergency Alert System</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/assets/icon-192.png" />
+  <link rel="stylesheet" href="/landing.css" />
+</head>
+<body>
+  <header class="topbar">
+    <img src="/assets/icon-192.png" alt="" class="logo" />
+    <div>
+      <h1>School Emergency Alert System</h1>
+      <p>Government-style emergency notifications for schools</p>
+    </div>
+  </header>
+
+  <main class="cards">
+    <a class="card staff" href="/dashboard/">
+      <span class="card-emoji">🚨</span>
+      <h2>Staff / Admin Dashboard</h2>
+      <p>Trigger fire, evacuation and lockdown alerts. Live status board: who is safe, who received the alert, who did not respond.</p>
+      <span class="cta">Open dashboard →</span>
+    </a>
+    <a class="card student" href="/app/">
+      <span class="card-emoji">📱</span>
+      <h2>Student App</h2>
+      <p>Register with your school account, receive high-priority emergency alerts and confirm <strong>I AM SAFE</strong>.</p>
+      <span class="cta">Open app →</span>
+    </a>
+  </main>
+
+  <section class="info">
+    <h3>How it works</h3>
+    <div class="flow">
+      <div class="step">👨‍🏫 Staff presses<br /><strong>🔥 EMERGENCY</strong></div>
+      <div class="arrow">→</div>
+      <div class="step">🖥️ Secure server<br /><strong>fan-out</strong></div>
+      <div class="arrow">→</div>
+      <div class="step">📱 Push service<br /><strong>FCM / Web Push</strong></div>
+      <div class="arrow">→</div>
+      <div class="step">📲 All student phones<br /><strong>instant alert</strong></div>
+    </div>
+    <p class="disclaimer">
+      This is a school communication system. It works alongside official national warning systems
+      (e.g. AT-Alert in Austria) and does not replace them.
+    </p>
+  </section>
+</body>
+</html>
+

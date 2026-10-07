@@ -1,0 +1,15 @@
+{
+  "name": "school-emergency-web-system",
+  "version": "1.0.0",
+  "description": "Government-style school emergency alert system (PWA + Node.js)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "web-push": "^3.6.7"
+  }
+}

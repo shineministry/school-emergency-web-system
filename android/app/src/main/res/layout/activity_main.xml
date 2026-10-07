@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚨 School Emergency"
+            android:textColor="@color/text"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Silent-mode alarm • full-screen alert • I AM SAFE"
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/inputServer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:hint="@string/server_hint"
+            android:inputType="textUri"
+            android:textColor="@color/text"
+            android:textColorHint="@color/muted"
+            android:backgroundTint="@color/line" />
+
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/text"
+            android:textColorHint="@color/muted"
+            android:backgroundTint="@color/line" />
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:textColor="@color/text"
+            android:textColorHint="@color/muted"
+            android:backgroundTint="@color/line" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:backgroundTint="@color/red"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mainError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFFF8FA3"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/statusCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:background="@color/panel"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/statusName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/statusRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/statusSchool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/statusMonitor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="#FFFF8FA3"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnMonitor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="@color/green"
+                android:text="START MONITORING"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/line"
+                android:text="LOG OUT"
+                android:textColor="@color/text" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Set the server URL to your school server. On this test PC use http://10.0.25.99:5000 — the PC and the phone must be on the same Wi-Fi."
+            android:textColor="@color/muted"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>

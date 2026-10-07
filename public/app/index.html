@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>School Emergency – Student App</title>
+  <meta name="theme-color" content="#c8102e" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/assets/icon-192.png" />
+  <link rel="apple-touch-icon" href="/assets/icon-192.png" />
+  <link rel="stylesheet" href="/app/app.css" />
+</head>
+<body>
+
+  <!-- AUTH -->
+  <section id="auth-view" class="view auth-view">
+    <div class="auth-box">
+      <img src="/assets/icon-192.png" alt="" class="auth-logo" />
+      <h1>School Emergency</h1>
+      <p class="subtitle">Sign in to receive emergency alerts</p>
+
+      <div class="tabs">
+        <button id="tab-login" class="tab active">Sign in</button>
+        <button id="tab-register" class="tab">Register</button>
+      </div>
+
+      <form id="login-form" class="form">
+        <label>Email<input type="email" id="login-email" required autocomplete="username" placeholder="student1@bg7.at" /></label>
+        <label>Password<input type="password" id="login-password" required autocomplete="current-password" placeholder="Student123!" /></label>
+        <button type="submit" class="btn primary">Sign in</button>
+      </form>
+
+      <form id="register-form" class="form" hidden>
+        <label>School
+          <select id="reg-school" required></select>
+        </label>
+        <label>Full name<input type="text" id="reg-name" required placeholder="Anna Müller" /></label>
+        <label>Class / group<input type="text" id="reg-group" placeholder="8A" value="students" /></label>
+        <label>Email<input type="email" id="reg-email" required placeholder="you@school.at" /></label>
+        <label>Password<input type="password" id="reg-password" required minlength="8" placeholder="At least 8 characters" /></label>
+        <button type="submit" class="btn primary">Create account</button>
+      </form>
+
+      <p id="auth-error" class="error" hidden></p>
+      <p class="hint">Demo student: student1@bg7.at / Student123!<br />After your first sign-in you stay signed in — this device stays registered for every school emergency.</p>
+    </div>
+  </section>
+
+  <!-- HOME -->
+  <section id="app-view" class="view" hidden>
+    <header class="app-header">
+      <div class="brand">
+        <img src="/assets/icon-192.png" alt="" />
+        <div>
+          <strong>School Emergency</strong>
+          <span id="school-name"></span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span id="user-name" class="user-chip"></span>
+        <button id="logout-btn" class="btn ghost small">Log out</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div id="push-banner" class="banner warn" hidden>
+        <strong>⚠️ Push notifications are off</strong>
+        <p>Enable them so you get alerts even when the app is closed.</p>
+        <button id="enable-push" class="btn primary">Enable notifications</button>
+      </div>
+
+      <div id="all-clear-banner" class="banner ok" hidden>
+        <strong>✅ All clear</strong>
+        <p>The school has confirmed the emergency is over.</p>
+      </div>
+
+      <div class="status-card calm" id="status-card">
+        <div class="status-icon" id="status-icon">🟢</div>
+        <div>
+          <h2 id="status-title">No active emergency</h2>
+          <p id="status-text">You are registered and will be alerted immediately if your school reports an emergency.</p>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>🔔 How alerts work</h3>
+          <p>In an emergency you get a red high-priority notification from your school with sound and vibration — even with the app closed. Tap <strong>I AM SAFE</strong> right in the notification, or open the app for the full-screen alert.</p>
+        </div>
+        <div class="info-card">
+          <h3>🛡️ After an alert</h3>
+          <p>Follow staff instructions and leave via the nearest safe exit. Tap <strong>I AM SAFE</strong> so the school knows you are accounted for.</p>
+        </div>
+        <div class="info-card">
+          <h3>📲 Install this app</h3>
+          <p>Use your browser menu → <em>Install app</em> / <em>Add to home screen</em> so alerts reach you like a native app.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- EMERGENCY (system dialog style) -->
+  <section id="emergency-view" class="overlay emergency-view" hidden>
+    <div class="sys-dialog" role="alertdialog" aria-modal="true" aria-labelledby="emergency-title">
+      <div class="sys-title">Emergency alert</div>
+      <div class="sys-type">
+        <span id="emergency-icon">🔥</span>
+        <strong id="emergency-title">SCHOOL FIRE ALERT</strong>
+        <span id="drill-badge" class="drill-badge" hidden>DRILL / ÜBUNG</span>
+      </div>
+      <div class="sys-body" id="emergency-message"></div>
+      <div class="sys-meta">
+        <span id="emergency-time"></span>
+        <span id="emergency-school"></span>
+      </div>
+      <button id="safe-btn" class="sys-ok">OK – I AM SAFE</button>
+      <button id="alarm-btn" class="sys-sound">🔊 SOUND ALARM</button>
+    </div>
+  </section>
+
+  <!-- SAFE CONFIRMED -->
+  <section id="safe-view" class="overlay safe-view" hidden>
+    <div class="sys-dialog ok-dialog" role="alertdialog">
+      <div class="sys-title">Confirmation</div>
+      <div class="big-check">✅</div>
+      <h1>You are marked SAFE</h1>
+      <p id="safe-detail">The school has been notified that you are safe.</p>
+      <button id="safe-back" class="sys-ok">OK</button>
+    </div>
+  </section>
+
+  <!-- ALL CLEAR -->
+  <section id="clear-view" class="overlay clear-view" hidden>
+    <div class="sys-dialog clear-dialog" role="alertdialog">
+      <div class="sys-title">Entwarnung / All clear</div>
+      <div class="big-check">🌤️</div>
+      <h1>ALL CLEAR</h1>
+      <p id="clear-detail">The emergency is over. Return to normal activities unless staff tell you otherwise.</p>
+      <button id="clear-back" class="sys-ok">OK</button>
+    </div>
+  </section>
+
+  <audio id="siren" src="/assets/siren.wav" loop preload="auto"></audio>
+
+  <script src="/app/app.js"></script>
+</body>
+</html>
+

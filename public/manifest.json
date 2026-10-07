@@ -1,0 +1,16 @@
+{
+  "name": "School Emergency Alert",
+  "short_name": "Emergency",
+  "description": "Government-style emergency alerts for your school: fire, evacuation, lockdown.",
+  "start_url": "/app/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0f14",
+  "theme_color": "#c8102e",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
+
