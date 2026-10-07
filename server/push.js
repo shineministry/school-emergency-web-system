@@ -8,7 +8,12 @@ const KEY_FILE = path.join(DATA_DIR, 'vapid.json');
 let publicKey;
 let privateKey;
 
-if (fs.existsSync(KEY_FILE)) {
+if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
+  // Hosted deployments (e.g. Render): keys live in env vars so they survive
+  // redeploys even though the filesystem is ephemeral.
+  publicKey = process.env.VAPID_PUBLIC_KEY;
+  privateKey = process.env.VAPID_PRIVATE_KEY;
+} else if (fs.existsSync(KEY_FILE)) {
   const keys = JSON.parse(fs.readFileSync(KEY_FILE, 'utf8'));
   publicKey = keys.publicKey;
   privateKey = keys.privateKey;

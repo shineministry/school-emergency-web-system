@@ -8,6 +8,9 @@
     "dev": "node --watch server/index.js"
   },
   "license": "MIT",
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "express": "^4.21.2",
     "web-push": "^3.6.7"
