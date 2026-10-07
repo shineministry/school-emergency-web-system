@@ -296,7 +296,7 @@ async function setupPush() {
   btn.addEventListener('click', async () => {
     const perm = await Notification.requestPermission();
     if (perm === 'granted') {
-      const reg = (await navigator.serviceWorker.register('/sw.js')) || navigator.serviceWorker.ready;
+      const reg = (await navigator.serviceWorker.register('../sw.js')) || navigator.serviceWorker.ready;
       const keyRes = await api('/api/push/public-key');
       const sub =
         (await reg.pushManager.getSubscription()) ||

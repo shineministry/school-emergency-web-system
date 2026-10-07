@@ -144,7 +144,7 @@ function escapeHtml(s) {
 
 async function init() {
   if ('serviceWorker' in navigator) {
-    state.swReg = await navigator.serviceWorker.register('/sw.js');
+    state.swReg = await navigator.serviceWorker.register('../sw.js');
     navigator.serviceWorker.addEventListener('message', onSWMessage);
   }
 
@@ -249,7 +249,7 @@ $('enable-push').addEventListener('click', async () => {
 });
 
 async function subscribeDevice() {
-  if (!state.swReg) state.swReg = await navigator.serviceWorker.register('/sw.js');
+  if (!state.swReg) state.swReg = await navigator.serviceWorker.register('../sw.js');
   const keyRes = await api('/api/push/public-key');
   let sub = await state.swReg.pushManager.getSubscription();
   if (!sub) {

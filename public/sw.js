@@ -1,14 +1,17 @@
-const CACHE = 'school-emergency-v8';
+const CACHE = 'school-emergency-v9';
 const SHELL = [
-  '/app/',
-  '/app/index.html',
-  '/app/app.js',
-  '/app/app.css',
-  '/manifest.json',
-  '/assets/icon-192.png',
-  '/assets/icon-512.png',
-  '/assets/siren.wav'
+  './app/',
+  './app/index.html',
+  './app/app.js',
+  './app/app.css',
+  './manifest.json',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/siren.wav'
 ];
+const BASE = new URL('./', self.location).pathname;
+const ICON = new URL('./assets/icon-192.png', self.location).href;
+const ICON_BIG = new URL('./assets/icon-512.png', self.location).href;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -32,7 +35,7 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
       return fetch(event.request).then((res) => {
-        if (res.ok && (url.pathname.startsWith('/app') || url.pathname.startsWith('/assets'))) {
+        if (res.ok && url.pathname.startsWith(BASE)) {
           const clone = res.clone();
           caches.open(CACHE).then((cache) => cache.put(event.request, clone));
         }
@@ -76,9 +79,9 @@ function notificationOptions(data, extra) {
       requireInteraction: true,
       vibrate: [700, 200, 700, 200, 700, 200, 700],
       color: '#e30613',
-      icon: '/assets/icon-192.png',
-      badge: '/assets/icon-192.png',
-      image: '/assets/icon-512.png',
+      icon: ICON,
+      badge: ICON,
+      image: ICON_BIG,
       data: { url: data.url, alertId: data.alertId },
       actions: [
         { action: 'safe', title: '✅ I AM SAFE' },
@@ -130,7 +133,7 @@ self.addEventListener('push', (event) => {
   try {
     data = event.data.json();
   } catch (_) {
-    data = { title: 'School Emergency', message: 'Open the app for details.', url: '/app/' };
+    data = { title: 'School Emergency', message: 'Open the app for details.', url: new URL('./app/', self.location).href };
   }
   event.waitUntil(
     (async () => {
@@ -143,8 +146,8 @@ self.addEventListener('push', (event) => {
           renotify: true,
           vibrate: [200, 100, 200],
           color: '#16a34a',
-          icon: '/assets/icon-192.png',
-          badge: '/assets/icon-192.png',
+          icon: ICON,
+          badge: ICON,
           data: { url: data.url }
         });
         return;
@@ -170,8 +173,8 @@ async function markSafeFromNotification(alertId) {
     await self.registration.showNotification('✅ You are marked SAFE', {
       body: 'The school has been notified that you are safe.',
       tag: 'school-safe-' + alertId,
-      icon: '/assets/icon-192.png',
-      badge: '/assets/icon-192.png',
+      icon: ICON,
+      badge: ICON,
       vibrate: [150, 100, 150]
     });
     const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
@@ -187,7 +190,7 @@ self.addEventListener('notificationclick', (event) => {
     return;
   }
   event.notification.close();
-  const url = data.url || '/app/';
+  const url = data.url || new URL('./app/', self.location).href;
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clients) => {
       for (const client of clients) {
@@ -217,8 +220,8 @@ self.addEventListener('message', (event) => {
         renotify: true,
         vibrate: [200, 100, 200],
         color: '#16a34a',
-        icon: '/assets/icon-192.png',
-        badge: '/assets/icon-192.png',
+        icon: ICON,
+        badge: ICON,
         data: { url: payload.url }
       });
       return;
