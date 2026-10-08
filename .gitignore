@@ -12,6 +12,8 @@ android/local.properties
 android/.idea/
 *.apk
 *.aab
+# ...but the student-facing APK download is part of the site
+!public/download/school-emergency.apk
 
 # Signing material
 *.jks

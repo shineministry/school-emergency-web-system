@@ -143,7 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            android:text="Set the server URL to your school server. On this test PC use http://10.0.25.99:5000 — the PC and the phone must be on the same Wi-Fi."
+            android:text="School server: https://emer-sch.shine-ministry.com — your phone needs internet (anywhere) to receive alerts. Ask your teacher if a different server address is given."
             android:textColor="@color/muted"
             android:textSize="12sp" />
     </LinearLayout>

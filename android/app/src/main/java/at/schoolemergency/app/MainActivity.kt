@@ -49,7 +49,7 @@ class MainActivity : Activity() {
         btnLogout = findViewById(R.id.btnLogout)
 
         val prefs = getSharedPreferences("se", MODE_PRIVATE)
-        inputServer.setText(prefs.getString("base", "http://10.0.25.99:5000"))
+        inputServer.setText(prefs.getString("base", "https://emer-sch.shine-ministry.com"))
         inputEmail.setText(prefs.getString("email", ""))
 
         if (!prefs.getString("token", "").isNullOrEmpty()) {
